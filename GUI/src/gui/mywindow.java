@@ -21,6 +21,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.eclipse.swt.widgets.List;
 
 public class mywindow {
 
@@ -35,6 +36,8 @@ public class mywindow {
 	private Text ort;
 	private Label lblOrt;
 	private Button btnWritejson;
+	private Button btnAusDateiLesen;
+	private List guilist;
 
 	/**
 	 * Launch the application.
@@ -105,6 +108,9 @@ public class mywindow {
 				System.out.println("mb closed");}
 				
 				Person.getPersonenListe().add(p);
+				
+				Person.getGuiList().add(p);
+				
 				clearMask();
 				
 				
@@ -113,7 +119,7 @@ public class mywindow {
 						
 			}
 		});
-		btnDrcken.setBounds(243, 62, 75, 25);
+		btnDrcken.setBounds(22, 226, 75, 25);
 		btnDrcken.setText("dr\u00FCcken");
 		
 		lblNachname = new Label(shell, SWT.NONE);
@@ -159,8 +165,25 @@ public class mywindow {
 				mb.open();
 			}
 		});
-		btnWritejson.setBounds(243, 138, 75, 25);
+		btnWritejson.setBounds(113, 226, 75, 25);
 		btnWritejson.setText("Write2JSON");
+		
+		btnAusDateiLesen = new Button(shell, SWT.NONE);
+		btnAusDateiLesen.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Person.ReadFromJson();
+				MessageBox mb= new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
+				mb.setText("read Json");
+				mb.setMessage("read Json");
+				mb.open();
+			}
+		});
+		btnAusDateiLesen.setBounds(209, 226, 95, 25);
+		btnAusDateiLesen.setText("aus datei lesen");
+		
+		guilist = new List(shell, SWT.BORDER);
+		guilist.setBounds(202, 14, 222, 194);
 
 	}
 	
@@ -190,5 +213,11 @@ public class mywindow {
 	}
 	public Button getBtnWritejson() {
 		return btnWritejson;
+	}
+	public Button getBtnAusDateiLesen() {
+		return btnAusDateiLesen;
+	}
+	public List getList() {
+		return guilist;
 	}
 }

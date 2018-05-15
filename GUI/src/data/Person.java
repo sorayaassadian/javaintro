@@ -1,12 +1,15 @@
 package data;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 public class Person {
 	
@@ -75,6 +78,21 @@ public class Person {
 			writer.flush();
 			writer.close();
 		} 
+		catch (IOException x) {
+			x.printStackTrace();
+		}
+		
+	}
+	
+	public static void ReadFromJson() {
+		try {
+			Reader r= new FileReader("c:\\temp\\output.json");
+			Gson gson= new GsonBuilder().serializeNulls().create();
+		
+			ArrayList<Person> personenlisteRead = new ArrayList<>();
+			java.lang.reflect.Type listType= new TypeToken <ArrayList<Person>>(){}.getType();
+			personenlisteRead= gson.fromJson(r, listType);
+		}
 		catch (IOException x) {
 			x.printStackTrace();
 		}
