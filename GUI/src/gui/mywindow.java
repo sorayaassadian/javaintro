@@ -21,6 +21,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ibm.icu.impl.StringRange.Adder;
+
 import org.eclipse.swt.widgets.List;
 
 public class mywindow {
@@ -77,7 +79,7 @@ public class mywindow {
 		shell.setText("SWT Application");
 		
 		Label lblVorna = new Label(shell, SWT.NONE);
-		lblVorna.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblVorna.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		lblVorna.setBounds(22, 31, 55, 15);
 		lblVorna.setText("vorname");
 		
@@ -85,7 +87,7 @@ public class mywindow {
 		vorname.setBounds(91, 28, 76, 21);
 		
 		Button btnDrcken = new Button(shell, SWT.NONE);
-		btnDrcken.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		btnDrcken.setBackground(SWTResourceManager.getColor(255, 192, 203));
 		btnDrcken.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -109,7 +111,7 @@ public class mywindow {
 				
 				Person.getPersonenListe().add(p);
 				
-				Person.getGuiList().add(p);
+				
 				
 				clearMask();
 				
@@ -119,11 +121,11 @@ public class mywindow {
 						
 			}
 		});
-		btnDrcken.setBounds(22, 226, 75, 25);
-		btnDrcken.setText("dr\u00FCcken");
+		btnDrcken.setBounds(92, 226, 75, 25);
+		btnDrcken.setText("fertig");
 		
 		lblNachname = new Label(shell, SWT.NONE);
-		lblNachname.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblNachname.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		lblNachname.setBounds(22, 67, 55, 15);
 		lblNachname.setText("nachname");
 		
@@ -134,12 +136,12 @@ public class mywindow {
 		strasse.setBounds(91, 104, 76, 21);
 		
 		lblStrasse = new Label(shell, SWT.NONE);
-		lblStrasse.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblStrasse.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		lblStrasse.setBounds(22, 107, 55, 15);
 		lblStrasse.setText("strasse");
 		
 		lblPlz = new Label(shell, SWT.NONE);
-		lblPlz.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblPlz.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		lblPlz.setBounds(22, 148, 55, 15);
 		lblPlz.setText("PLZ");
 		
@@ -150,11 +152,12 @@ public class mywindow {
 		ort.setBounds(91, 187, 76, 21);
 		
 		lblOrt = new Label(shell, SWT.NONE);
-		lblOrt.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
+		lblOrt.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		lblOrt.setBounds(22, 190, 55, 15);
 		lblOrt.setText("ort");
 		
 		btnWritejson = new Button(shell, SWT.NONE);
+		btnWritejson.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		btnWritejson.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -165,10 +168,11 @@ public class mywindow {
 				mb.open();
 			}
 		});
-		btnWritejson.setBounds(113, 226, 75, 25);
+		btnWritejson.setBounds(248, 226, 75, 25);
 		btnWritejson.setText("Write2JSON");
 		
 		btnAusDateiLesen = new Button(shell, SWT.NONE);
+		btnAusDateiLesen.setBackground(SWTResourceManager.getColor(SWT.COLOR_TITLE_INACTIVE_BACKGROUND_GRADIENT));
 		btnAusDateiLesen.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -177,12 +181,14 @@ public class mywindow {
 				mb.setText("read Json");
 				mb.setMessage("read Json");
 				mb.open();
+				guilist.add(Person.getPersonenListe().toString());
 			}
 		});
-		btnAusDateiLesen.setBounds(209, 226, 95, 25);
+		btnAusDateiLesen.setBounds(329, 226, 95, 25);
 		btnAusDateiLesen.setText("aus datei lesen");
 		
 		guilist = new List(shell, SWT.BORDER);
+		guilist.setBackground(SWTResourceManager.getColor(255, 240, 245));
 		guilist.setBounds(202, 14, 222, 194);
 
 	}
