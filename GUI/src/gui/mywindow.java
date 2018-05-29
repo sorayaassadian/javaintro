@@ -21,7 +21,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ibm.icu.impl.StringRange.Adder;
+
 
 import org.eclipse.swt.widgets.List;
 
