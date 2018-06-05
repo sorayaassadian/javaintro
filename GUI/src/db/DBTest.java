@@ -18,7 +18,7 @@ public class DBTest {
 
 	public DBTest() throws SQLException{
 		//Verbindung zu DB...
-		//pfad
+		//
 		Connection conn= DriverManager.getConnection("jdbc:ucanaccess://c:/users/sorayaassadian/dbtest.accdb;memory=false");
 		//Insert ausführen
 		Statement stmt = conn.createStatement();
